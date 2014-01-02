@@ -61,10 +61,28 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
@@ -125,10 +143,28 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
@@ -203,10 +239,28 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
@@ -267,10 +321,28 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_NeoPixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\examples\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
