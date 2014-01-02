@@ -32,7 +32,7 @@ void loop(){
 #endif
 }	
 void cliUnrecognized(const char *command){
-	Serial.println("asdfasdfasdf");
+	Serial.println("?");
 	Serial.println(command);
 }
 
