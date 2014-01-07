@@ -216,8 +216,8 @@
       </AvrGccCpp>
     </ToolchainSettings>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
-        <arduino.upload.port>COM5</arduino.upload.port>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM3</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -399,8 +399,8 @@
       </AvrGccCpp>
     </ToolchainSettings>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
-        <arduino.upload.port>COM5</arduino.upload.port>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM3</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

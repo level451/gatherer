@@ -40,12 +40,12 @@
 	// the last 2 bytes of the address is stores in eeprom bytes 10 - 16
 	// and added at setup
 	
-	uint64_t pipes[6] = { 0xF0F0F0DD, 0xF0F0F0DD,0xF0F0F0DD,0xF0F0F0DD,0xF0F0F0DD,0xF0F0F0DD }; 
-	byte snd[PACKETSIZE]; // send buffer
-	byte rec[PACKETSIZE]; // rec buffer
-	int rfsuccess[6]; // packet acked count
-	int rffail[6]; // packets not acked count
- 
+	uint64_t pipe = 0xF0F0DD00 ;
+	byte radioData[PACKETSIZE]; // radio send/rec data
+	int radiosuccess; // packet acked count
+	int radiofail; // packets not acked count
+	byte radioThis = EEPROM.read(10);
+	
 #endif
 
 
@@ -111,30 +111,28 @@ dow.setWaitForConversion(FALSE);
 #endif
 #ifdef CLI
 	cli.addCommand("SET",cliSet); 
+	cli.addCommand("R",cliRadio); 
 	cli.setDefaultHandler(cliUnrecognized);
 	println("CLI Active");
 #endif
 
 #ifdef RADIO
-	for (int i = 0; i< 6; ++i)
-	{
-		pipes[i] = ((pipes[i] << 8)+EEPROM.read(10+i)) ;
-	}
+
 	radio.begin();
-	radio.setRetries(2,5); // delay 3 = 2*250 uS + 150 base = 750 uS delay between retries and 5 retries max
+	radio.setRetries(15,15); // delay 3 = 2*250 uS + 150 base = 750 uS delay between retries and 5 retries max
 	radio.setPayloadSize(PACKETSIZE); // packet 32 bytes (max is 32)
 	radio.setPALevel(RF24_PA_MAX);
 	radio.setCRCLength(RF24_CRC_16); // 2 byte crc
 	radio.setDataRate(RF24_250KBPS);
 	radio.setAutoAck(1); 
 	radio.setChannel(76);
-	for (int i=1; i < 6; ++i)
-	{
-		radio.openReadingPipe(i,pipes[i]);  
-	}
+	radio.openReadingPipe(1,pipe+radioThis);
+	
 	radio.startListening();
 	#ifdef CLI
-		Serial.println("Radio Active");
+		Serial.print("Radio ");
+		Serial.print(radioThis);
+		Serial.println(" Active ");
 	#endif
 
 #endif
@@ -142,7 +140,7 @@ dow.setWaitForConversion(FALSE);
 }
 void loop(){
 #ifdef RADIO
-	readRadio();
+	radioRead();
 #endif
 #ifdef CLI
 	cli.readSerial(); //check the serial buffer for commands
@@ -156,159 +154,147 @@ void println(const char* data){
 
 }
 
+
+#ifdef CLI
 void cliUnrecognized(const char *command){
 	Serial.println("?");
 	Serial.println(command);
 }
-#ifdef CLI
-void cliSet() {
+void cliRadio()
+{
+	char *arg;
+	radioData[0] = atoi(cli.next()); // to address
+	radioData[1] = radioThis;
+	for (byte i = 2; i < PACKETSIZE ;++i)
+	{
+		radioData[i] = atoi(cli.next()); //packet type
+	}
+	radioWrite(radioData[0]);
+
+}
+void cliSet()
+{
 	char *arg;
 	Serial.print("SET ");
 	arg = cli.next();
-	if (arg != NULL) {
-		if (strncmp(arg,"R",1) == 0 )
+	if (arg != NULL)
+	{
+		if (strncmp(arg,"A",1) == 0 )
 		{
-			Serial.println("Radio ");
-				for (int q = 0; q < 6; ++q)
-				{
-
-					arg = cli.next();
-
-					if (arg != NULL)
-					{
-						EEPROM.write(q+10,atoi(arg));
-					}
-						Serial.print("Pipe:");
-						Serial.print(q);
-						Serial.print(" Set to ");
-						Serial.println(EEPROM.read(q+10));
-					
-				}
+			arg = cli.next();
+			if (arg != NULL)
+			{
+				EEPROM.write(10,atoi(arg));
+			}
 	
-
-		}
-			else
+			radio.stopListening();			
+			radioThis = EEPROM.read(10);
+			radio.openReadingPipe(1,pipe+radioThis);
+			Serial.print("Address:");
+			Serial.println(radioThis);
+			radio.startListening();
+		}	
+	
+		else
 			{
 				Serial.print("?:");
 				Serial.println(arg);
 			}
 		}
-
 	else
-		{
-					Serial.println("IRTemperature, 1wire, Display, Radio, Flip");
-		}
+	{
+		Serial.println("Address");
+	}
 }
 #endif
 #ifdef RADIO
-void readRadio(){
-
-uint8_t pipe_num;
-if ( radio.available(&pipe_num) )
-	//
-{
-	//Serial.println("incoming radio");
-	// Dump the payloads until we've gotten everything
-//	bool done = false;
-//	while (!done)
-//	{
-		// Fetch the payload, and see if this was the last one.
-	//	done = radio.read( &rec,PACKETSIZE );
-
-//	}
-	
-	radio.read( &rec,PACKETSIZE );	
-	//  byte 0 of the packet is the destination address
-	
-	byte destaddress = rec[0];
-	if ((pipe_num == 5) && (destaddress != EEPROM.read(11))) // dont route stuff comming in on pipe 5 unless its addressed to us (address in 11 eeprom)
+void radioRead(){
+	byte pipe_num;
+	 // check if this is any radio data in the buffer	
+	if (radio.available(&pipe_num))
 	{
+		radio.read( &radioData,PACKETSIZE );	// read data from buffer into the global array buf
+		//process this command - allows for routing the packet later
+		// dont think I care about pipe number right now
+		radioProcess();
+	
+	}
+}
+void radioWrite(byte destaddress){
+	if (destaddress == radioThis){
+		radioProcess();
 		return;
 	}
-	#ifdef DEBUG
-	// byte 1 is origination address
-	Serial.print(rec[1]);
-	Serial.print(" sent a packet for:");
-	Serial.print(destaddress);
-	Serial.print(" type:");
-	Serial.println(rec[2]);
-	
-
-	#endif
-		
-		if ((destaddress == EEPROM.read(11)) || ((EEPROM.read(10) == 255) && (destaddress == 255))) // check pipe 1 and not end unit
-		//process the packet instead of fowarding it
-		// this happens when a message is comming in on pipe 1(for this unit) or on any pipe if this units parent is 255 (i think)
-		{
-			//Serial.print("Packet for THIS unit ");
-			//Serial.println(destaddress);
-			
-			// byte 2 is the packet type 
-			
-			if (rec[2] == 1) // packet type 1wire temp
-			{
-			
-			//report1wireF(true);
-			return;
-			}
-					if (rec[2] == 2) // packet type 1ir temp
-					{
-						//reportIrF(true);
-						return;
-					}
-		} 
-		else
-		{
-			for (int i=1; i < 6; ++i)
-			{
-				if (destaddress <= EEPROM.read(10+i)) // check pipe 1 and not end unit
-				{
-				
-					radio.stopListening();
-					 radio.openWritingPipe(pipes[i]);
-		if (radio.write( &rec, PACKETSIZE ) == 1){++rfsuccess[i];}else{++rffail[i];}
-
-				
-					radio.startListening();
-		
-					Serial.print("Forwarded packet to route ");
-							Serial.println(EEPROM.read(10+i));
-					
-					return;
-					}				
-			}
-		
-					radio.stopListening();
-					 radio.openWritingPipe(pipes[0]);
-		if (radio.write( &rec, PACKETSIZE ) == 1){++rfsuccess[0];}else{++rffail[0];}
-
-					
-
-
-					radio.startListening();
-					Serial.print("Forwarded UP packet to route ");
-					Serial.println(EEPROM.read(10));
-					return;
-		
-			
-		}
-		
-		
-		byte packettype = rec[2];
-		float temperature;
-		
-		for (int i = 2; i < 20; i=i+2)
-		{
-			temperature= ((float)(rec[i]<<8)+rec[i+1])/100;
-			if (temperature == 0) {break;}
-			Serial.println(temperature);
-		}
-
-	Serial.print("Unprocessed packet");
-
-}
-}
+	radio.stopListening();
+	radio.openReadingPipe(0,pipe+destaddress);
+	radio.openWritingPipe(pipe+destaddress);
+#ifdef DEBUG
+	Serial.print(radioThis);
+	Serial.print("sending packet to :");
+	Serial.println(destaddress);
 #endif
+	delay(25);
+				
+	if (radio.write( &radioData, PACKETSIZE ) == 1){
+		++radiosuccess;
+		#ifdef DEBUG
+		Serial.println("Sucess");
+		#endif
+	}
+	else{
+		++radiofail;
+		#ifdef DEBUG
+		Serial.println("Fail");
+		#endif
+	}
+	radio.startListening();
+}
+void radioProcess()
+{
+	//  byte 0 of the packet is the destination address
+		byte destaddress = radioData[0];
+		#ifdef DEBUG
+		// byte 1 is origination address
+			Serial.print(radioData[1]);
+			Serial.print(" sent a packet for:");
+			Serial.print(destaddress);
+			Serial.print(" type:");
+			Serial.println(radioData[2]);
+	
+		#endif
+		// byte 2 contains the packet type
+		switch (radioData[2])
+		{
+		
+		case 10:
+			Serial.print("Got 1wire Data");
+			break;
+		case 50: //request 1wire data
+			reportOnewire(radioData[1]); // report 1wire data to the requesting gatherer			
+			break;
+		case 100: //set led color (led,R,G,B)
+			strip.setPixelColor(radioData[3],radioData[4],radioData[5],radioData[6]);
+			strip.show();
+			break;
+		}
+		//if (radioData[2] == 1) // packet type 1wire temp
+				//{
+					////report1wireF(true);
+					//return;
+				//}
+//
+}
+
+#endif
+void reportOnewire(byte sendAddress){
+
+radioData[0] = sendAddress; //dest
+radioData[1] = radioThis; //source
+radioData[2] = 10; // packet type 1wire data
+radioWrite(sendAddress);
+}
+
+
 #ifdef DEBUG
 // function to print a device address
 void printAddress(DeviceAddress deviceAddress)
