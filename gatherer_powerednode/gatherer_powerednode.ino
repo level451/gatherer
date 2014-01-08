@@ -105,8 +105,9 @@ dow.setResolution(dows[i],12);
 	printAddress(dows[i]);
 #endif
 }
-dow.requestTemperatures();
+
 dow.setWaitForConversion(FALSE);
+dow.requestTemperatures();
 
 #endif
 #ifdef CLI
@@ -179,7 +180,7 @@ void cliSet()
 	arg = cli.next();
 	if (arg != NULL)
 	{
-		if (strncmp(arg,"A",1) == 0 )
+		if (strncmp(arg,"I",1) == 0 )
 		{
 			arg = cli.next();
 			if (arg != NULL)
@@ -190,7 +191,7 @@ void cliSet()
 			radio.stopListening();			
 			radioThis = EEPROM.read(10);
 			radio.openReadingPipe(1,pipe+radioThis);
-			Serial.print("Address:");
+			Serial.print("ID:");
 			Serial.println(radioThis);
 			radio.startListening();
 		}	
@@ -216,8 +217,10 @@ void radioRead(){
 		radio.read( &radioData,PACKETSIZE );	// read data from buffer into the global array buf
 		//process this command - allows for routing the packet later
 		// dont think I care about pipe number right now
-		radioProcess();
-	
+		// pipe 0 needs to be ignored
+		if (pipe_num == 1){	
+			radioProcess();
+		}
 	}
 }
 void radioWrite(byte destaddress){
@@ -226,7 +229,7 @@ void radioWrite(byte destaddress){
 		return;
 	}
 	radio.stopListening();
-	radio.openReadingPipe(0,pipe+destaddress);
+
 	radio.openWritingPipe(pipe+destaddress);
 #ifdef DEBUG
 	Serial.print(radioThis);
@@ -263,11 +266,29 @@ void radioProcess()
 	
 		#endif
 		// byte 2 contains the packet type
+		float onetemp;
 		switch (radioData[2])
 		{
 		
-		case 10:
-			Serial.print("Got 1wire Data");
+		case 10: // onewire data recieved
+			Serial.print("{\"ID\":");
+			Serial.print(radioThis);	
+			for (int i=0; i < 9 ; i++)
+			{
+				onetemp= ((float)(radioData[(i*2)+3]<<8)+radioData[(i*2)+4])/100;
+				if (onetemp == 0) {break;}	
+				Serial.print(",\"Temp_");
+				Serial.print(radioThis);
+				Serial.print('_');
+				Serial.print(i);
+				Serial.print("\":");
+				Serial.print(onetemp);
+			
+					
+			}
+			Serial.println("}");
+			
+	
 			break;
 		case 50: //request 1wire data
 			reportOnewire(radioData[1]); // report 1wire data to the requesting gatherer			
@@ -287,11 +308,20 @@ void radioProcess()
 
 #endif
 void reportOnewire(byte sendAddress){
+dow.requestTemperatures();
+for(byte i=0; i < PACKETSIZE; ++i){radioData[i]=0;}
 
 radioData[0] = sendAddress; //dest
 radioData[1] = radioThis; //source
 radioData[2] = 10; // packet type 1wire data
-radioWrite(sendAddress);
+
+	for (byte i=0; i < dowCount; i++){
+		int inttemp = ((double) dow.getTempF(dows[i])*100);
+		unsigned int hbyte =(inttemp>>8);
+		radioData[(i*2)+3] =(hbyte);
+		radioData[(i*2)+4] = ((byte) (inttemp));
+	}
+	radioWrite(sendAddress);
 }
 
 
@@ -304,5 +334,6 @@ void printAddress(DeviceAddress deviceAddress)
     if (deviceAddress[i] < 16) Serial.print("0");
     Serial.print(deviceAddress[i], HEX);
   }
+	Serial.println("");
 }
 #endif

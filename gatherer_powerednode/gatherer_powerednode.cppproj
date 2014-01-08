@@ -413,6 +413,9 @@
     <Folder Include="Visual Micro\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="gatherer_libs.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Visual Micro\.gatherer_powerednode.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
