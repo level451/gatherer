@@ -67,6 +67,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
@@ -77,6 +79,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
@@ -149,6 +153,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
@@ -159,6 +165,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
@@ -217,7 +225,7 @@
     </ToolchainSettings>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.upload.port>COM3</arduino.upload.port>
+        <arduino.upload.port>COM5</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -250,6 +258,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
@@ -260,6 +270,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
@@ -332,6 +344,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
@@ -342,6 +356,8 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
@@ -400,7 +416,7 @@
     </ToolchainSettings>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.upload.port>COM3</arduino.upload.port>
+        <arduino.upload.port>COM5</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
