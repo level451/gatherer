@@ -13,13 +13,12 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 #include <Metro.h>
-Metro uiCheck = Metro(50);
-//Metro packettimer[2] = {Metro(50),Metro(50)}
+Metro uiCheck = Metro(75,true);
 byte uiMenuCount = 0;
-byte uiMenu = 0;
+
 byte uiSelect[6] = {0,0,0,0,0,0};
 boolean uiMenuMode = false;
-Metro screenupdate = Metro(2000);
+Metro screenupdate = Metro(2000,true);
 
 
 byte screenupdatecount = 15;
@@ -106,27 +105,30 @@ EnergyMonitor emon1;                   // Create an instance
 
 #endif
 
-Metro t0 = Metro(getinterval(0));
-Metro t1 = Metro(getinterval(1));
-Metro t2 = Metro(getinterval(2));
-Metro t3 = Metro(getinterval(3));
-Metro t4 = Metro(getinterval(4));
-Metro t5 = Metro(getinterval(5));
-Metro t6 = Metro(getinterval(6));
-Metro t7 = Metro(getinterval(7));
-
+Metro t0 = Metro(getinterval(0),true);
+Metro t1 = Metro(getinterval(1),true);
+Metro t2 = Metro(getinterval(2),true);
+Metro t3 = Metro(getinterval(3),true);
+Metro t4 = Metro(getinterval(4),true);
+//Metro t5 = Metro(getinterval(5));
+//Metro t6 = Metro(getinterval(6));
+//Metro t7 = Metro(getinterval(7));
+//
 
 void setup() {
+   pinMode(3,OUTPUT); // two transistor outputs
+   // digitalWrite(3,LOW); //lcd bacllight
+  digitalWrite(3,HIGH); //lcd bacllight
  Serial.begin(115200);
  
  
 
 
- pinMode(3,OUTPUT); // two transistor outputs
+
  pinMode(6,OUTPUT);
  pinMode(A7,INPUT);
  digitalWrite(6,LOW); //
- digitalWrite(3,LOW); //lcd bacllight
+
 #ifdef IR
 	#include <i2cmaster.h>
 	i2c_init(); //Initialize the i2c bus
@@ -145,13 +147,14 @@ void setup() {
 	emon1.calcIrms(1480);  // Calculate Irms only .. first value usually not correct
 		emon1.calcIrms(1480);  // Calculate Irms only .. first value usually not correct
 #endif
+
 #ifdef LCD
 	tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip, black tab  
 	tft.setTextColor(ST7735_WHITE,ST7735_BLACK);
 //if (bitRead(EEPROM.read(0),4)){tft.setRotation(2);}//flipdisplay
 
 //tft.fillRect(0,0, 128, 20, ST7735_BLACK);
- digitalWrite(3,HIGH); //lcd bacllight
+ 
  //tft.fillScreen(ST7735_BLACK);
 
 #endif
@@ -221,39 +224,39 @@ for (int i= 0; i < 15; ++i){
 
 }
 void loop(){
-	if (uiCheck.check() == 1 && radioThis != 3){ui();}
+	if (uiCheck.check() == 1){ui();}
 	if (t0.check() == 1){
 		radiowritefromeeprom(30);
 		radiowritefromeeprom(31);
 	}
-	if (t1.check() == 1){
-		radiowritefromeeprom(32);
-		radiowritefromeeprom(33);
-	}
-	if (t2.check() == 1){
-		radiowritefromeeprom(34);
-		radiowritefromeeprom(35);
-	}
-	if (t3.check() == 1){
-		radiowritefromeeprom(36);
-		radiowritefromeeprom(37);
-	}
-	if (t4.check() == 1){
-		radiowritefromeeprom(38);
-		radiowritefromeeprom(39);
-	}
-	if (t5.check() == 1){
-		radiowritefromeeprom(40);
-		radiowritefromeeprom(41);
-	}
-	if (t6.check() == 1){
-		radiowritefromeeprom(42);
-		radiowritefromeeprom(43);
-	}
-	if (t7.check() == 1){
-		radiowritefromeeprom(44);
-		radiowritefromeeprom(45);
-	}
+	//if (t1.check() == 1){
+		//radiowritefromeeprom(32);
+		//radiowritefromeeprom(33);
+	//}
+	//if (t2.check() == 1){
+		//radiowritefromeeprom(34);
+		//radiowritefromeeprom(35);
+	//}
+	//if (t3.check() == 1){
+		//radiowritefromeeprom(36);
+		//radiowritefromeeprom(37);
+	//}
+	//if (t4.check() == 1){
+		//radiowritefromeeprom(38);
+		//radiowritefromeeprom(39);
+	//}
+	//if (t5.check() == 1){
+		//radiowritefromeeprom(40);
+		//radiowritefromeeprom(41);
+	//}
+	//if (t6.check() == 1){
+		//radiowritefromeeprom(42);
+		//radiowritefromeeprom(43);
+	//}
+	//if (t7.check() == 1){
+		//radiowritefromeeprom(44);
+		//radiowritefromeeprom(45);
+	//}
 
 	if(screenupdate.check() == 1 and radioThis == 5){
 	//eeprom packets 15-29 run constantly one ever 2 seconds	
@@ -366,16 +369,16 @@ void cliSet()
 			Serial.println(radioThis);
 			radio.startListening();
 		}	
-	
-		else
-			{
-				Serial.print("?:");
-				Serial.println(arg);
-			}
+	//
+		//else
+			//{
+				//Serial.print("?:");
+				//Serial.println(arg);
+			//}
 		}
 	else
 	{
-		Serial.println("Address");
+		Serial.println("ID");
 	}
 }
 #endif
@@ -403,25 +406,29 @@ void radioWrite(byte destaddress){
 
 	radio.openWritingPipe(pipe+destaddress);
 #ifdef DEBUG
-	Serial.print(radioThis);
-	Serial.print("sending packet to :");
-	Serial.println(destaddress);
+	//Serial.print(radioThis);
+	//Serial.print("sending packet to :");
+	//Serial.println(destaddress);
 #endif
-	delay(25);
-				
+	delay(25); //?
+			Serial.print("{\"ID\":");
+			Serial.print(radioThis);
 	if (radio.write( &radioData, PACKETSIZE ) == 1){
-		++radiosuccess;
-		#ifdef DEBUG
-		Serial.println("Sucess");
-		#endif
+		//++radiosuccess;
+//#ifdef DEBUG
+
+		Serial.println(",\"Packet\":true}");
+//#endif
 	}
 	else{
-		++radiofail;
-		#ifdef DEBUG
-		Serial.println("Fail");
-		#endif
+		//++radiofail;
+//#ifdef DEBUG
+		
+		Serial.println(",\"Packet\":false}");
+//#endif
 	}
 	radio.startListening();
+		delay(25);//?
 }
 void radioProcess()
 {
@@ -429,19 +436,20 @@ void radioProcess()
 		byte destaddress = radioData[0];
 		//#ifdef DEBUG
 		// byte 1 is origination address
-			Serial.print(radioData[1]);
-			Serial.print(" sent a packet for:");
-			Serial.print(destaddress);
-			Serial.print(" type:");
-			Serial.print(radioData[2]);
-			Serial.print(" +");
-		Serial.print(radioData[3]);
-	Serial.print(":");
-	Serial.print(radioData[4]);
-	Serial.print(":");
-	Serial.print(radioData[5]);
-	Serial.print(":");
-	Serial.println(radioData[6]);
+			
+			//Serial.print(radioData[1]);
+			//Serial.print(" sent a packet for:");
+			//Serial.print(destaddress);
+			//Serial.print(" type:");
+			//Serial.print(radioData[2]);
+			//Serial.print(" +");
+		//Serial.print(radioData[3]);
+	//Serial.print(":");
+	//Serial.print(radioData[4]);
+	//Serial.print(":");
+	//Serial.print(radioData[5]);
+	//Serial.print(":");
+	//Serial.println(radioData[6]);
 	
 		//#endif
 		// byte 2 contains the packet type
@@ -453,90 +461,108 @@ void radioProcess()
 	//		int celcius; //in sensor
 		byte parm = radioData[3] ;
 double tempData = 0x0000; // zero out the data // ir sensor
+byte x;
   	switch (radioData[2])
 		{
 		
 		case 10: // onewire data recieved
 	printid();
 			if (radioData[3]>9){
-			for (byte i=0; i < 9 ; i++)
-			{
-				onetemp= ((float)(radioData[(i*2)+4]<<8)+radioData[(i*2)+5])/100;
-				if (onetemp == 0) {break;}	
-				Serial.print(",\"Temp_");
-				Serial.print(radioData[1]);
-				Serial.print('_');
-				Serial.print(i);
-				Serial.print("\":");
-				Serial.print(onetemp);
-			}
+				for (byte i=0; i < 9 ; i++)
+				{
+					//onetemp= ((float)(radioData[(i*2)+4]<<8)+radioData[(i*2)+5])/100;
+					if (radioData[(i*2)+4]+radioData[(i*2)+5] == 0) {break;}	
+					printint(10,i);
+
+					Serial.print("\":");
+					Serial.print(radiofloat((i*2)+4));
+				}
 			} else
 			{
-				onetemp= ((float)(radioData[4]<<8)+radioData[5])/100;
-				if (onetemp == 0) {break;}	
-				Serial.print(",\"Temp_");
-				Serial.print(radioData[1]);
-				Serial.print('_');
-				Serial.print(radioData[3]);
+				//onetemp= ((float)(radioData[4]<<8)+radioData[5])/100;
+				//if (onetemp == 0) {break;}	
+				printint(10,radioData[3]);
 				Serial.print("\":");
-				Serial.print(onetemp);
+				Serial.print(radiofloat(4));
 			}
 			Serial.println("}");
 			break;
 		case 11: // Light data recieved
 			printid();
-			Serial.print(",\"Light_");
-					Serial.print(radioData[1]);	
-			Serial.print(":");
+			
+			printint(11,0);
+				Serial.print("\":");
 			Serial.print(radioint(4));	
+
 			Serial.println("}");
 			break;
 		case 12: // Power data recieved
 			printid();
-			Serial.print(",\"Power_");
-					Serial.print(radioData[1]);	
-			Serial.print(":");
+			printint(12,0);
+				Serial.print("\":");
 			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;
 		case 13: // Humidity data recieved
 			printid();
-			Serial.print(",\"Humidity_");
-			Serial.print(radioData[1]);	
-		
-			Serial.print(":");
-			Serial.print(((float)(radioData[4]<<8)+radioData[5])/100);	
+			printint(13,0);
+				Serial.print("\":");
+			Serial.print(radiofloat(4));	
 			Serial.println("}");
 			break;
 		case 14: // Vin data recieved
 			printid();
-			Serial.print(",\"Vin_");
-					Serial.print(radioData[1]);	
-			Serial.print(":");
+			printint(14,0);
+			Serial.print("\":");
 			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;	
 		case 15: // Contact data recieved
 			printid();
-			Serial.print(",\"Contact_");
-			Serial.print(radioData[1]);	
-			Serial.print(":");
-			Serial.print(radioData[4]);	
+			
+			printint(15,0);
+			Serial.print("\":");
+			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;
 		case 16: // IR data recieved
 			printid();
-			Serial.print(",\"IR_");
-			Serial.print(radioData[1]);	
-			Serial.print(":");
-			Serial.print(((float)(radioData[4]<<8)+radioData[5])/100);	
+			printint(16,0);
+				Serial.print("\":");
+			Serial.print(radiofloat(4));	
 			Serial.println("}");
 			break;
+		case 19: 
+			printid();
+				
+				printint(10,radioData[3]);
+				Serial.print("\":");
+				Serial.print(radiofloat(4));
+				printint(11,0);
+					Serial.print("\":");
+				Serial.print(radioint(6));	
+				printint(12,0);
+				Serial.print("\":");
+				Serial.print(radioint(8));	
+				printint(13,0);
+				Serial.print("\":");
+				Serial.print(radiofloat(10));	
+				printint(14,0);
+					Serial.print("\":");
+				Serial.print(radioint(12));	
+				printint(15,0);
+					Serial.print("\":");
+				Serial.print(radioint(14));	
+				printint(16,0);
+				Serial.print("\":");
+				Serial.print(radiofloat(16));	
+				Serial.println("}");
+				break;
 		case 20: // menu event
 		printid();
 			Serial.print(",\"Menu_");
 			Serial.print(radioData[1]);	
-			Serial.print(":");
+			Serial.print("\":");
 			Serial.print(radioData[4]);
 			Serial.println("}");
 			break;
@@ -554,6 +580,7 @@ double tempData = 0x0000; // zero out the data // ir sensor
 					}
 						radioData[(dowCount*2)+4] = 0;
 						radioData[(dowCount*2)+5] = 0;
+						radioWrite(radioData[0]);
 						
 				}
 				else
@@ -564,7 +591,7 @@ double tempData = 0x0000; // zero out the data // ir sensor
 					//radioData[7] = 0;
 				}
 				
-				radioWrite(radioData[0]);
+				//
 
 			//reportOnewire(); // report 1wire data to the requesting gatherer			
 			break;
@@ -583,8 +610,9 @@ double tempData = 0x0000; // zero out the data // ir sensor
 			//radioData[4] =(inttemp>>8);
 			//radioData[5] = ((byte) (inttemp));
 			
+			startRadioPacket(radioData[1],12);
 			radiobyte( (emon1.calcIrms(148*(parm+1))*9.51)-3);
-			radioWrite(radioData[0]);
+			//radioWrite(radioData[0]); moved to radiobyte
 			break;
 		case 53: // requiest humidity
 
@@ -607,7 +635,8 @@ double tempData = 0x0000; // zero out the data // ir sensor
 		  break;
 		case 55: //request contact status
 			startRadioPacket(radioData[1],15); // packet type contact change data
-			radioData[4] = digitalRead(A0);
+			radioData[4]=0;
+			radioData[5] = digitalRead(A0);
 			radioWrite(radioData[0]);
 			break;
 		case 56: // ir
@@ -616,9 +645,27 @@ double tempData = 0x0000; // zero out the data // ir sensor
 			radiobyte(readIr());
 			
 			break;
-
+		case 59: // all sensors
+		startRadioPacket(radioData[1],19);  //make type 16 ir respose
+		 valtoradio((double) dow.getTempF(dows[parm])*100,4); //1wire
+		 valtoradio(analogRead(A7),6); //light
+		 valtoradio((emon1.calcIrms(1480)*9.51)-3,8); //power
+		 valtoradio(dht.getHumidity()*100,10); //humidity
+		 valtoradio(readVcc(),12); //proc vcc
+		 valtoradio( digitalRead(A0),14); //contact
+		 valtoradio(readIr(),16); // ir
+		 radioWrite(radioData[0]);
+			//radiobyte(readIr());
 		case 100: //set led color (led,R,G,B)
-			strip.setPixelColor(radioData[3],radioData[4],radioData[5],radioData[6]);
+			x=1;
+			for (byte i = 0; i<6; ++i){
+			if (radioData[3] & x){
+			strip.setPixelColor(i,radioData[4],radioData[5],radioData[6]);
+
+
+			}
+			x=x+x;
+			}
 			strip.show();
 			break;
 		case 150: //send radio packet stored in eeprom (or exicute it locally)
@@ -738,7 +785,7 @@ long readVcc() {
 void startRadioPacket(byte sendAddress,byte packetType){
 	//for(byte i=0; i < PACKETSIZE; ++i){radioData[i]=0;} // clear buffer
 	radioData[2] = packetType; // packet type 1wire data	
-	if (radioData[4] > 0  && packetType < 50 )
+	if (radioData[4] > 0  && packetType < 19 ) //changed from 50 for type 19 and 20 all sensor and menu to be excluded
 	{
 		
 		radioData[7] = radioData[6]; // xpos of text
@@ -797,16 +844,16 @@ if (uiMenuMode == false)	{
 	else{
 	if (uiMenuCount != 0) {--uiMenuCount;}
 	}
-	strip.setPixelColor(5,0,0,uiMenuCount*2);
+	//strip.setPixelColor(5,0,0,uiMenuCount*2);
 	if (uiMenuCount > 20){
 	menuchange(0);
 	uiMenuMode = true;
 	uiMenuCount = 40;
 	strip.setPixelColor(5,0,40,0);
-	//strip.show();
+	strip.show();
 //send menu started packet
 	}
-	strip.show();
+	//strip.show();
 } else
 {
 	for (int i = 0; i < 5;++i){	strip.setPixelColor(i,0,0,0);}
@@ -863,6 +910,38 @@ void printid(){
 			Serial.print(radioData[1]);	
 		
 }
+void printint(byte id,byte num){
+				
+			switch (id){
+				case 10:
+					Serial.print(",\"Temp");
+					Serial.print(num);
+					break;
+				case 11:
+					Serial.print(",\"Light");
+					break;
+				case 12:
+					Serial.print(",\"Power");
+					break;
+				case 13:
+					Serial.print(",\"Humidity");
+					break;
+				case 14:
+					Serial.print(",\"Vin");
+					break;
+				case 15:
+					Serial.print(",\"Contact");
+					break;
+				case 16:
+					Serial.print(",\"IR");
+					break;
+			}
+			Serial.print("_");
+			Serial.print(radioData[1]);	
+		//Serial.print(":");
+			
+}
+
 void uiselect(byte id){
 		uiSelect[0] = uiSelect[id];
 		for (int i =1;i<6;++i){uiSelect[i]=0;}
@@ -880,10 +959,21 @@ int radioint(byte start){
 	
 	return (radioData[start]<<8)+radioData[start+1];
 	}
+	
+float radiofloat(byte start){
+	//return 11.1;
+	return ((float)((radioData[start]<<8)+radioData[start+1])/100);
+
+}
 void radiobyte(int val){
-	radioData[4] =(val>>8);
-	radioData[5] = ((byte) (val));
+	valtoradio(val,4);
+//	radioData[4] =(val>>8);
+//	radioData[5] = ((byte) (val));
 	radioWrite(radioData[0]);
+}
+void valtoradio(int val,byte where){
+	radioData[where] =(val>>8);
+	radioData[where+1] = ((byte) (val));
 }
 void setcursorsize(byte size){
 				tft.setCursor(radioData[6],radioData[7]);
@@ -923,7 +1013,7 @@ long getinterval(byte timer){
 	int location = (46*EEPROMPACKETSIZE)+101+(timer*2);
 	//Serial.print(timer);
 	//Serial.print(" : ");
-	//Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
+	Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
 	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
 //return 1000;
 }
