@@ -49,6 +49,7 @@
         <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
         <avrgcc.compiler.symbols.DefSymbols>
           <ListValues>
+            <Value>__AVR_ATmega328p__</Value>
             <Value>__AVR_ATmega328P__</Value>
             <Value>ARDUINO=101</Value>
             <Value>ARDUINO_MAIN</Value>
@@ -61,64 +62,34 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -135,6 +106,7 @@
         <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
         <avrgcccpp.compiler.symbols.DefSymbols>
           <ListValues>
+            <Value>__AVR_ATmega328p__</Value>
             <Value>__AVR_ATmega328P__</Value>
             <Value>ARDUINO=101</Value>
             <Value>ARDUINO_MAIN</Value>
@@ -147,64 +119,34 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -240,6 +182,7 @@
         <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
         <avrgcc.compiler.symbols.DefSymbols>
           <ListValues>
+            <Value>__AVR_ATmega328p__</Value>
             <Value>__AVR_ATmega328P__</Value>
             <Value>ARDUINO=101</Value>
             <Value>ARDUINO_MAIN</Value>
@@ -252,64 +195,34 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -326,6 +239,7 @@
         <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
         <avrgcccpp.compiler.symbols.DefSymbols>
           <ListValues>
+            <Value>__AVR_ATmega328p__</Value>
             <Value>__AVR_ATmega328P__</Value>
             <Value>ARDUINO=101</Value>
             <Value>ARDUINO_MAIN</Value>
@@ -338,64 +252,34 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Esplora\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Ethernet\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Firmata\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\GSM\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Control\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Robot_Motor\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SD\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Servo\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_ST7735\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Adafruit_GFX\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Stepper\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TFT\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\WiFi\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>

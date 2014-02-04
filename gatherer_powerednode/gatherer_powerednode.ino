@@ -21,7 +21,7 @@ boolean uiMenuMode = false;
 Metro screenupdate = Metro(2000,true);
 
 
-byte screenupdatecount = 15;
+
 #ifdef IR
 	#include <i2cmaster.h>
 
@@ -104,18 +104,21 @@ EnergyMonitor emon1;                   // Create an instance
 	byte radioParent = 3;
 
 #endif
-
+byte t0packet = 15;
 Metro t0 = Metro(getinterval(0),true);
 Metro t1 = Metro(getinterval(1),true);
 Metro t2 = Metro(getinterval(2),true);
 Metro t3 = Metro(getinterval(3),true);
-Metro t4 = Metro(getinterval(4),true);
-//Metro t5 = Metro(getinterval(5));
+//Metro t4 = Metro(getinterval(4),true);
+////Metro t5 = Metro(getinterval(5));
 //Metro t6 = Metro(getinterval(6));
 //Metro t7 = Metro(getinterval(7));
 //
 
 void setup() {
+
+
+
    pinMode(3,OUTPUT); // two transistor outputs
    // digitalWrite(3,LOW); //lcd bacllight
   digitalWrite(3,HIGH); //lcd bacllight
@@ -225,18 +228,18 @@ for (int i= 0; i < 15; ++i){
 }
 void loop(){
 	if (uiCheck.check() == 1){ui();}
-	if (t0.check() == 1){
+	if (t1.check() == 1){
 		radiowritefromeeprom(30);
 		radiowritefromeeprom(31);
 	}
-	//if (t1.check() == 1){
-		//radiowritefromeeprom(32);
-		//radiowritefromeeprom(33);
-	//}
-	//if (t2.check() == 1){
-		//radiowritefromeeprom(34);
-		//radiowritefromeeprom(35);
-	//}
+	if (t2.check() == 1){
+		radiowritefromeeprom(32);
+		radiowritefromeeprom(33);
+	}
+	if (t3.check() == 1){
+		radiowritefromeeprom(34);
+		radiowritefromeeprom(35);
+	}
 	//if (t3.check() == 1){
 		//radiowritefromeeprom(36);
 		//radiowritefromeeprom(37);
@@ -258,29 +261,13 @@ void loop(){
 		//radiowritefromeeprom(45);
 	//}
 
-	if(screenupdate.check() == 1 and radioThis == 5){
+	if(t0.check() == 1 ){
 	//eeprom packets 15-29 run constantly one ever 2 seconds	
-	if(screenupdatecount > 29) {screenupdatecount = 15;}
-//		Serial.print(screenupdatecount);
-		radiowritefromeeprom(screenupdatecount);
-		++screenupdatecount;
-		//radioData = {3,5,65,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-		//radioData[0] = 3;
-		//radioData[1] = 5;
-		//radioData[2] = 50;
-		//radioData[3] = 0;
-		//radioData[4] = 6;
-		//radioData[5] = 0;
-		//radioData[6] = 0;
-		//radioWrite(radioData[0]);
-		//radioData[0] = 5;
-		//radioData[1] = 5;
-		//radioData[2] = 56;
-		//radioData[3] = 0;
-		//radioData[4] = 6;
-		//radioData[5] = 0;
-		//radioData[6] = 40;
-		//radioWrite(radioData[0]);
+	if(t0packet > 29) {t0packet = 15;}
+//		Serial.print(t0packet);
+		radiowritefromeeprom(t0packet);
+		++t0packet;
+
 	}
 #ifdef CONTACT
 if (contactChange){
@@ -466,13 +453,13 @@ byte x;
 		{
 		
 		case 10: // onewire data recieved
-	printid();
+	printid(10);
 			if (radioData[3]>9){
 				for (byte i=0; i < 9 ; i++)
 				{
 					//onetemp= ((float)(radioData[(i*2)+4]<<8)+radioData[(i*2)+5])/100;
 					if (radioData[(i*2)+4]+radioData[(i*2)+5] == 0) {break;}	
-					printint(10,i);
+					printbody(10,i);
 
 					Serial.print("\":");
 					Serial.print(radiofloat((i*2)+4));
@@ -481,85 +468,85 @@ byte x;
 			{
 				//onetemp= ((float)(radioData[4]<<8)+radioData[5])/100;
 				//if (onetemp == 0) {break;}	
-				printint(10,radioData[3]);
+				printbody(10,radioData[3]);
 				Serial.print("\":");
 				Serial.print(radiofloat(4));
 			}
 			Serial.println("}");
 			break;
 		case 11: // Light data recieved
-			printid();
+			printid(11);
 			
-			printint(11,0);
+			printbody(11,0);
 				Serial.print("\":");
 			Serial.print(radioint(4));	
 
 			Serial.println("}");
 			break;
 		case 12: // Power data recieved
-			printid();
-			printint(12,0);
+			printid(12);
+			printbody(12,0);
 				Serial.print("\":");
 			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;
 		case 13: // Humidity data recieved
-			printid();
-			printint(13,0);
+			printid(13);
+			printbody(13,0);
 				Serial.print("\":");
 			Serial.print(radiofloat(4));	
 			Serial.println("}");
 			break;
 		case 14: // Vin data recieved
-			printid();
-			printint(14,0);
+			printid(14);
+			printbody(14,0);
 			Serial.print("\":");
 			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;	
 		case 15: // Contact data recieved
-			printid();
+			printid(15);
 			
-			printint(15,0);
+			printbody(15,0);
 			Serial.print("\":");
 			Serial.print(radioint(4));	
 			Serial.println("}");
 			break;
 		case 16: // IR data recieved
-			printid();
-			printint(16,0);
+			printid(16);
+			printbody(16,0);
 				Serial.print("\":");
 			Serial.print(radiofloat(4));	
 			Serial.println("}");
 			break;
 		case 19: 
-			printid();
+			printid(19);
 				
-				printint(10,radioData[3]);
+				printbody(10,radioData[3]);
 				Serial.print("\":");
 				Serial.print(radiofloat(4));
-				printint(11,0);
+				printbody(11,0);
 					Serial.print("\":");
 				Serial.print(radioint(6));	
-				printint(12,0);
+				printbody(12,0);
 				Serial.print("\":");
 				Serial.print(radioint(8));	
-				printint(13,0);
+				printbody(13,0);
 				Serial.print("\":");
 				Serial.print(radiofloat(10));	
-				printint(14,0);
+				printbody(14,0);
 					Serial.print("\":");
 				Serial.print(radioint(12));	
-				printint(15,0);
+				printbody(15,0);
 					Serial.print("\":");
 				Serial.print(radioint(14));	
-				printint(16,0);
+				printbody(16,0);
 				Serial.print("\":");
 				Serial.print(radiofloat(16));	
 				Serial.println("}");
 				break;
 		case 20: // menu event
-		printid();
+		printid(20);
 			Serial.print(",\"Menu_");
 			Serial.print(radioData[1]);	
 			Serial.print("\":");
@@ -674,10 +661,16 @@ byte x;
 		case 151: // write radio packet to eeprom (or exicute it locally) trims of the first 4 bytes
 			radiowritetoeeprom(radioData[3]);
 			break;
+		case 199: // clear eeprom
+			
+	for (byte i = 0; i < 46; ++i){
+	byte radioData[20]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	radiowritetoeeprom(i);
+	
+	}
 #ifdef LCD
 		case 200: // LCD Commands
-		int j=6;
-		char text[20];
+		
 		switch (radioData[3]) {
 			case 0: // backlight (0-255)
 				analogWrite(3,radioData[4]); //lcd bacllight
@@ -685,9 +678,9 @@ byte x;
 			case 1: // clear screen
 				tft.fillScreen(ST7735_BLACK);
 				break;	
-			case 2: // draw pixel
-				tft.drawPixel(radioData[4],radioData[5],radioint(6));
-				break;
+			//case 2: // draw pixel
+				//tft.drawPixel(radioData[4],radioData[5],radioint(6));
+				//break;
 			case 3: // draw line
 				tft.drawLine(radioData[4],radioData[5],radioData[6],radioData[7],radioint(8));
 				break;
@@ -697,65 +690,38 @@ byte x;
 			case 5: // draw Horizontal line
 				tft.drawFastHLine(radioData[4],radioData[5],radioData[6],radioint(7));
 				break;
-			case 6: // draw rectangle
-				tft.drawRect(radioData[4],radioData[5],radioData[6],radioData[7],radioint(8));
-				break;
+			//case 6: // draw rectangle
+				//tft.drawRect(radioData[4],radioData[5],radioData[6],radioData[7],radioint(8));
+				//break;
 			case 7: // draw fill rectangle
 				tft.fillRect(radioData[4],radioData[5],radioData[6],radioData[7],radioint(8));
 				break;
 			case 10: // text
-				tft.setCursor(radioData[4],radioData[5]);
-				tft.setTextSize(1); 
-				while (true){
-					if (radioData[j] == 95){ // replace underscore with space
-					text[j-6]=32;
-					}else{
-					text[j-6]=char(radioData[j]);
-					}
-					if (radioData[j]==0){break;}
-					++j;
-				}
-				tft.print(text);
+				tfttext(1);
 				break;
 			case 11: // text
-				tft.setCursor(radioData[4],radioData[5]);
-				tft.setTextSize(2);
-				while (true){
-					if (radioData[j] == 95){ // replace underscore with space
-					text[j-6]=32;
-					}else{
-					text[j-6]=char(radioData[j]);
-					}
-					if (radioData[j]==0){break;}
-					++j;
-				}
-				tft.print(text);
+				
+				tfttext(2);
 				break;
 			case 12: // text
-				//tft.setCursor(radioData[6],radioData[7]);
-				//tft.setTextSize(1);
-				setcursorsize(1);
-				tft.print(radioint(4));	
+				tftint(1);
 				break;
 			case 13: // text
-				setcursorsize(1);
-				tft.print(((float)(radioData[4]<<8)+radioData[5])/100);	
+				
+				tftfloat(1);
 				break;
 			case 14: // text
-				setcursorsize(2);
-				tft.print(radioint(4));	
+				tftint(2);
 				break;
 			case 15: // text
-				setcursorsize(2);
-				tft.print(((float)(radioData[4]<<8)+radioData[5])/100);	
+				
+				tftfloat(2);
 				break;
 			case 16: // text
-				setcursorsize(3);
-				tft.print(radioint(4));	
+				tftint(3);
 				break;
 			case 17: // text
-				setcursorsize(3);
-				tft.print(((float)(radioData[4]<<8)+radioData[5])/100);	
+				tftfloat(3);
 				break;
 	
 			case 20: // text color with background
@@ -770,6 +736,42 @@ byte x;
 }
 
 #endif
+void tfttext(byte textsize){
+	tft.setCursor(radioData[4],radioData[5]);
+	tft.setTextSize(textsize); 
+	int j=6;
+		char text[10];
+		while (true){
+		if (radioData[j] == 95){ // replace underscore with space
+		text[j-6]=32;
+		}else{
+		text[j-6]=char(radioData[j]);
+		}
+		if (radioData[j]==0){break;}
+		++j;
+	}
+	tft.print(text);
+}
+void tftfloat(byte cursorsize)
+{
+setcursorsize(cursorsize);
+float data =((radioData[4]<<8)+radioData[5])/100;
+if (data<10){tft.print(" ");}
+if (data<100){tft.print(" ");}
+tft.print((float)data);	
+}
+void tftint(byte cursorsize){
+	setcursorsize(cursorsize);
+	if (radioint(4)<10){tft.print(" ");}
+	if (radioint(4)<100){tft.print(" ");}
+	if (radioint(4)<1000){tft.print(" ");}
+	tft.print(radioint(4));	
+
+}
+void setcursorsize(byte size){
+				tft.setCursor(radioData[6],radioData[7]);
+				tft.setTextSize(size);
+}
 long readVcc() {
   long result;
   // Read 1.1V reference against AVcc
@@ -905,14 +907,16 @@ void menuchange(byte item){
 		radioWrite(radioParent);
 
 }
-void printid(){
+void printid(byte type){
 			Serial.print("{\"ID\":");
 			Serial.print(radioData[1]);	
+				Serial.print(",\"Type\":");
+				Serial.print(type);
 		
 }
-void printint(byte id,byte num){
-				
-			switch (id){
+void printbody(byte type,byte num){
+			
+			switch (type){
 				case 10:
 					Serial.print(",\"Temp");
 					Serial.print(num);
@@ -975,10 +979,7 @@ void valtoradio(int val,byte where){
 	radioData[where] =(val>>8);
 	radioData[where+1] = ((byte) (val));
 }
-void setcursorsize(byte size){
-				tft.setCursor(radioData[6],radioData[7]);
-				tft.setTextSize(size);
-}
+
 void radiowritefromeeprom(byte packetnumber){
 	int j = 0;
 	for (int i=(packetnumber*EEPROMPACKETSIZE)+101; i < (packetnumber*EEPROMPACKETSIZE)+101+EEPROMPACKETSIZE; ++i){
@@ -987,7 +988,8 @@ void radiowritefromeeprom(byte packetnumber){
 		
 		++j;
 	}
-
+	//Serial.print("EEprom");
+	//Serial.println(packetnumber);
 	if(radioData[0] > 0){
 		radioWrite(radioData[0]);
 		//Serial.print("Sent");
@@ -996,9 +998,9 @@ void radiowritefromeeprom(byte packetnumber){
 	}
 }
 void radiowritetoeeprom(byte packetnumber){
-//	Serial.println("write to eeprom");
+	//Serial.print("write to eeprom");
+	//Serial.println(packetnumber);
 	int j = 4;
-
 	for (int i=(packetnumber*EEPROMPACKETSIZE)+101; i < ((packetnumber*EEPROMPACKETSIZE)+101)+EEPROMPACKETSIZE; ++i){
 		EEPROM.write(i,radioData[j]);
 			//Serial.print(j);
@@ -1013,7 +1015,7 @@ long getinterval(byte timer){
 	int location = (46*EEPROMPACKETSIZE)+101+(timer*2);
 	//Serial.print(timer);
 	//Serial.print(" : ");
-	Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
+	//Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
 	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
 //return 1000;
 }
