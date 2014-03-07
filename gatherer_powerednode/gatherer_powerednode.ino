@@ -1,7 +1,7 @@
 
 int cn = 0;
 // All the dependant Libraries
-#define IR
+//#define IR
 #define HUMIDITY
 #define POWER
 #define LCD 
@@ -100,7 +100,7 @@ EnergyMonitor emon2;                   // Create an instance
 	
 	uint64_t pipe = 0xF0F0DD00 ;
 	byte radioData[PACKETSIZE]; // radio send/rec data
-	int radiosuccess; // packet acked count
+	int radiosuccess; // packet acked count.
 	int radiofail; // packets not acked count
 	byte radioThis = EEPROM.read(10);
 	byte radioParent = 3;
@@ -123,7 +123,7 @@ void setup() {
    // digitalWrite(3,LOW); //lcd bacllight
  digitalWrite(3,HIGH); //lcd bacllight
  Serial.begin(115200);
- 
+
  
 
 
@@ -153,7 +153,8 @@ void setup() {
 
 #ifdef LCD
 	tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip, black tab  
-	tft.setTextColor(ST7735_WHITE,ST7735_BLACK);
+	//tft.setTextColor(ST7735_WHITE,ST7735_BLACK);
+	tft.setTextWrap(false);
 //if (bitRead(EEPROM.read(0),4)){tft.setRotation(2);}//flipdisplay
 
 //tft.fillRect(0,0, 128, 20, ST7735_BLACK);
@@ -172,11 +173,11 @@ void setup() {
 	strip.setPixelColor(0,5,5,5);
 	strip.show();
 
-
+ 
 #ifdef ONEWIRE
  dow.begin();
 	
- 
+
 dowCount=dow.getDeviceCount();
 #ifdef CLI
 //	Serial.print("1Wire Device count:");
@@ -628,6 +629,7 @@ byte x;
 			  //Serial.print("\t\t");
 			  //Serial.println(dht.toFahrenheit(temperature), 1);
 			startRadioPacket(radioData[1],14);
+			
 			radiobyte(dht.getHumidity()*100);
 			break;	
 		case 55: //request Vin
@@ -872,6 +874,7 @@ void startRadioPacket(byte sendAddress,byte packetType){
 #endif
 int readIr()
 {
+#ifdef IR
 		  int dev = 0x5A<<1; // ir sensor
 		  int data_low = 0;// ir sensor
 		  int data_high = 0;// ir sensor
@@ -892,7 +895,7 @@ int readIr()
 			  inttemp = inttemp - 27315;
 			  //return 100X temp fehrenheit
 			  return (inttemp*1.80)+3200; 
-			  
+#endif	  
 }
 
 void ui()
@@ -901,7 +904,7 @@ void ui()
 int ir = readIr();
 if (uiMenuMode == false)	{
 	// if temp > threshold start counting to see if we should go to menu mode
-	if (ir > 7400){
+	if (ir > 8000){
 	++uiMenuCount;
 	} 
 	else{
@@ -1087,7 +1090,7 @@ long getinterval(byte timer){
 	//Serial.print(timer);
 	//Serial.print(" : ");
 	//Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
-	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
+	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*200));
 //return 1000;
 }
 	
