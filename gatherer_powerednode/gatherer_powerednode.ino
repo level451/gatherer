@@ -1,7 +1,7 @@
 
 int cn = 0;
 // All the dependant Libraries
-//#define IR
+#define IR
 #define HUMIDITY
 #define POWER
 #define LCD 
