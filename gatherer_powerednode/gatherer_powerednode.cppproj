@@ -175,7 +175,7 @@
     </ToolchainSettings>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.upload.port>COM8</arduino.upload.port>
+        <arduino.upload.port>COM6</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -316,7 +316,7 @@
     </ToolchainSettings>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.upload.port>COM8</arduino.upload.port>
+        <arduino.upload.port>COM6</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

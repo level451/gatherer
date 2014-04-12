@@ -214,7 +214,7 @@ dow.requestTemperatures();
 	radio.setCRCLength(RF24_CRC_16); // 2 byte crc
 	radio.setDataRate(RF24_250KBPS);
 	radio.setAutoAck(1); 
-	radio.setChannel(76);
+	radio.setChannel(96); //was 76
 	radio.openReadingPipe(1,pipe+radioThis);	
 	radio.startListening();
 
@@ -236,7 +236,7 @@ void loop(){
 		radiowritefromeeprom(30);
 		radiowritefromeeprom(31);
 		radiowritefromeeprom(32);
-		//Serial.println(cn);
+		
 		//cn = 0;
 	}
 	if (t2.check() == 1){
@@ -244,6 +244,7 @@ void loop(){
 		radiowritefromeeprom(33);
 		radiowritefromeeprom(34);
 		radiowritefromeeprom(35);
+		
 	}
 	if (t3.check() == 1){
 		radiowritefromeeprom(36);
@@ -688,6 +689,10 @@ byte x;
 				t1.interval(getinterval(1));
 				t2.interval(getinterval(2));
 				t3.interval(getinterval(3));
+				Serial.println(getinterval(0));
+				Serial.println(getinterval(1));
+				Serial.println(getinterval(2));
+				Serial.println(getinterval(3));
 				t0.reset();
 				t1.reset();
 				t2.reset();
@@ -904,7 +909,7 @@ void ui()
 int ir = readIr();
 if (uiMenuMode == false)	{
 	// if temp > threshold start counting to see if we should go to menu mode
-	if (ir > 8000){
+	if (ir > 9400){
 	++uiMenuCount;
 	} 
 	else{
@@ -1090,7 +1095,7 @@ long getinterval(byte timer){
 	//Serial.print(timer);
 	//Serial.print(" : ");
 	//Serial.println((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*100));
-	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*200));
+	return ((EEPROM.read(location)*60000)+(EEPROM.read(location+1)*250));
 //return 1000;
 }
 	
