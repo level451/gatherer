@@ -68,8 +68,6 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
@@ -84,12 +82,18 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -125,8 +129,6 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
@@ -141,12 +143,18 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -201,8 +209,6 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
@@ -217,12 +223,18 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -258,8 +270,6 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Metro\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\I2Cmaster\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\EmonLib\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\PinChangeInt</Value>
@@ -274,12 +284,18 @@
             <Value>C:\Users\Todd\Documents\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\Serialcommand\utility</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
-            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24</Value>
             <Value>C:\Users\Todd\Documents\Arduino\libraries\RF24\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\arduino-DHT-master\utility</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries\adafuit_neopixel\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
+            <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
+            <Value>C:\Users\Todd\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>

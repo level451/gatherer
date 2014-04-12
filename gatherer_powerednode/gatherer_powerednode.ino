@@ -1,5 +1,5 @@
-
-int cn = 0;
+//laptop test
+//int cn = 0;
 // All the dependant Libraries
 #define IR
 #define HUMIDITY
@@ -208,7 +208,7 @@ dow.requestTemperatures();
 #ifdef RADIO
 
 	radio.begin();
-	radio.setRetries(15,15); // delay 3 = 2*250 uS + 150 base = 750 uS delay between retries and 5 retries max
+	radio.setRetries(3,15); // delay 3 = 2*250 uS + 150 base = 750 uS delay between retries and 5 retries max
 	radio.setPayloadSize(PACKETSIZE); // packet 32 bytes (max is 32)
 	radio.setPALevel(RF24_PA_MAX);
 	radio.setCRCLength(RF24_CRC_16); // 2 byte crc
@@ -230,14 +230,14 @@ for (int i= 0; i < 15; ++i){
 }
 void loop(){
 	
-	++cn;
+	//++cn;
 	if (uiCheck.check() == 1){ui();}
 	if (t1.check() == 1){
 		radiowritefromeeprom(30);
 		radiowritefromeeprom(31);
 		radiowritefromeeprom(32);
-		Serial.println(cn);
-		cn = 0;
+		//Serial.println(cn);
+		//cn = 0;
 	}
 	if (t2.check() == 1){
 
