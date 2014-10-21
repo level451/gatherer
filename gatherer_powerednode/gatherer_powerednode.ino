@@ -1,10 +1,10 @@
 //laptop test
 //int cn = 0;
-// All the dependant Libraries
+// All the Dependant Libraries
 #define IR
 #define HUMIDITY
-#define POWER
-#define LCD 
+//#define POWER
+//#define LCD 
 #define CONTACT
 #define DEBUG
 #define LEDS // Enable WS2812 LEDS 
@@ -113,9 +113,11 @@ Metro t2 = Metro(getinterval(2),true);
 Metro t3 = Metro(getinterval(3),true);
 
 
-
 void setup() {
-
+	strip.begin();
+		strip.setPixelColor(0,5,0,0);
+		strip.show();
+		
 
 
  pinMode(3,OUTPUT); // lcd backlight transitor
@@ -138,7 +140,7 @@ void setup() {
 	i2c_init(); //Initialize the i2c bus
 	PORTC = (1 << PORTC4) | (1 << PORTC5);//enable pullups
 #endif
-
+		
 #ifdef HUMIDITY
 
   dht.setup(A2); // data pin 2
@@ -168,10 +170,8 @@ void setup() {
 	PCintPort::attachInterrupt(A0, &contactInterupt, CHANGE);
 
 #endif
-//#ifdef LEDS
-	strip.begin();
-	strip.setPixelColor(0,5,5,5);
-	strip.show();
+
+
 
  
 #ifdef ONEWIRE
@@ -205,6 +205,7 @@ dow.requestTemperatures();
 	//println("CLI Active");
 #endif
 
+
 #ifdef RADIO
 
 	radio.begin();
@@ -220,18 +221,26 @@ dow.requestTemperatures();
 
 
 #endif
+
+
+
+
 // first 15 eeprom packet executed at startup
 for (int i= 0; i < 15; ++i){
 	//Serial.println(i);
 	radiowritefromeeprom(i);
+strip.setPixelColor(0,17*i,17*i,17*i);
+strip.show();
+
 	}
-	
-	
+		strip.setPixelColor(0,0,1,0);
+		strip.show();
+		
 }
 void loop(){
-	
+
 	//++cn;
-	if (uiCheck.check() == 1){ui();}
+	//if (uiCheck.check() == 1){ui();}
 	if (t1.check() == 1){
 		radiowritefromeeprom(30);
 		radiowritefromeeprom(31);
@@ -239,6 +248,7 @@ void loop(){
 		
 		//cn = 0;
 	}
+	//Serial.println("end");
 	if (t2.check() == 1){
 
 		radiowritefromeeprom(33);
@@ -342,8 +352,9 @@ void cliRadio()
 
 }
 void cliSet()
+
 {
-	
+
 	char *arg;
 	Serial.print("SET ");
 	arg = cli.next();
@@ -383,13 +394,21 @@ void radioRead(){
 	 // check if this is any radio data in the buffer	
 	if (radio.available(&pipe_num))
 	{
+		
 		radio.read( &radioData,PACKETSIZE );	// read data from buffer into the global array buf
 		//process this command - allows for routing the packet later
 		// dont think I care about pipe number right now
 		// pipe 0 needs to be ignored
+	//	Serial.println(pipe_num);
+		
 		if (pipe_num == 1){	
+	strip.setPixelColor(0,0,5,0);
+	strip.show();
 			radioProcess();
+			
 		}
+		strip.setPixelColor(0,0,0,0);
+		strip.show();
 	}
 }
 void radioWrite(byte destaddress){
@@ -405,7 +424,7 @@ void radioWrite(byte destaddress){
 	//Serial.print("sending packet to :");
 	//Serial.println(destaddress);
 #endif
-	delay(25); //?
+	//delay(15); //?
 	radio.write( &radioData, PACKETSIZE );
 			//Serial.print("{\"ID\":");
 			//Serial.print(radioThis);
@@ -424,12 +443,19 @@ void radioWrite(byte destaddress){
 //#endif
 	//}
 	radio.startListening();
-		delay(25);//?
+	//	delay(5);//?
 }
 void radioProcess()
 {
 	//  byte 0 of the packet is the destination address
 		byte destaddress = radioData[0];
+		boolean ping = false;
+		if (radioData[2] & B10000000){
+
+			radioData[2] = radioData[2] & B01111111;
+			ping = true;
+		}
+		
 		//#ifdef DEBUG
 		// byte 1 is origination address
 			
@@ -461,6 +487,10 @@ byte x;
   	switch (radioData[2])
 		{
 		
+		case 1:
+			printid(1);
+			Serial.println("}");
+			break;
 		case 10: // onewire data recieved
 	printid(10);
 			if (radioData[3]>9){
@@ -611,13 +641,17 @@ byte x;
 			
 		
 			startRadioPacket(radioData[1],12);
+			#ifdef POWER
 			radiobyte( (emon1.calcIrms(148*(parm+1))*9.51)-3);
+			#endif
 			break;
 		case 53: // request power value
 			
 		
 			startRadioPacket(radioData[1],13);
+			#ifdef POWER
 			radiobyte( (emon2.calcIrms(148*(parm+1))*9.51)-3);
+			#endif
 			break;
 		case 54: // requiest humidity
 
@@ -647,18 +681,24 @@ byte x;
 			break;
 		case 57: // ir
 		//	inttemp = readIr();
-			startRadioPacket(radioData[1],17);  //make type 16 ir respose
+			
+			startRadioPacket(radioData[1],17);  //make type 16 
 			radiobyte(readIr());
+	
+
 			break;
 		case 58: // 	
 			 digitalWrite(6,parm);
 			break;
 		case 59: // all sensors
+		dow.requestTemperatures(); // got to read 1wire
 		startRadioPacket(radioData[1],19);  //make type 16 ir respose
 		 valtoradio((double) dow.getTempF(dows[parm])*100,4); //1wire
 		 valtoradio(analogRead(A7),6); //light
+		 #ifdef POWER 
 		 valtoradio((emon1.calcIrms(444)*9.51)-3,8); //power
 		 valtoradio((emon2.calcIrms(444)*9.51)-3,10); //power
+		 #endif
 		 valtoradio(dht.getHumidity()*100,12); //humidity
 		 valtoradio(readVcc(),14); //proc vcc
 		 valtoradio( digitalRead(A0),16); //contact
@@ -678,10 +718,10 @@ byte x;
 			}
 			strip.show();
 			break;
-		case 150: //send radio packet stored in eeprom (or exicute it locally)
+		case 110: //send radio packet stored in eeprom (or exicute it locally)
 			radiowritefromeeprom(radioData[3]);
 			break;
-		case 151: // write radio packet to eeprom (or exicute it locally) trims of the first 4 bytes
+		case 111: // write radio packet to eeprom (or exicute it locally) trims of the first 4 bytes
 			radiowritetoeeprom(radioData[3]);
 			if (radioData[3] == 59) // timer block - reset timers
 			{
@@ -699,8 +739,20 @@ byte x;
 				t3.reset();
 				
 			}
-			
-			break;
+		break;
+		case 112:
+		// set id to return address
+			EEPROM.write(10,radioData[1]);
+			radioData[4] = 0;
+			startRadioPacket(1,1);
+			radioWrite(1);
+
+			radio.stopListening();
+			radioThis = EEPROM.read(10);
+			radio.openReadingPipe(1,pipe+radioThis);
+			radio.startListening();
+		break;
+		
 		case 199: // clear eeprom
 		
 	for (byte i = 0; i < 51; ++i){
@@ -709,7 +761,7 @@ byte x;
 	
 	}
 #ifdef LCD
-		case 200: // LCD Commands
+		case 120: // LCD Commands
 		int color;
 		switch ((radioData[3] & B11110000) >> 4){
 		case 0:
@@ -730,12 +782,8 @@ byte x;
 		case 5:
 			color = 0xF81F;	//MEGENTA
 			break;
-		case 6:
-			color = 0xFFE0;	//YELLOW
-			break;	
-		case 7:
-			color = 0x0000;	//BLACK
-			break;
+		
+		
 		}
 		tft.setTextColor(color,0);
 		switch (radioData[3] & B00001111) {
@@ -799,46 +847,57 @@ byte x;
 #endif	
 		}
 	
+if (ping == true){
+	// make a type 1 radio pack3et
+	radioData[4] = 0;
+	startRadioPacket(radioData[1],1);
+	radioWrite(radioData[0]);
+	
+	
+}
+
 }
 
 #endif
-void tfttext(byte textsize){
-	tft.setCursor(radioData[4],radioData[5]);
-	tft.setTextSize(textsize); 
-	int j=6;
-		char text[10];
-		while (true){
-		//if (radioData[j] == 95){ // replace underscore with space
-		//text[j-6]=32;
-		//}else{
-		text[j-6]=char(radioData[j]);
-		//}
-		if (radioData[j]==0){break;}
-		++j;
+#ifdef LCD
+	void tfttext(byte textsize){
+		tft.setCursor(radioData[4],radioData[5]);
+		tft.setTextSize(textsize); 
+		int j=6;
+			char text[10];
+			while (true){
+			//if (radioData[j] == 95){ // replace underscore with space
+			//text[j-6]=32;
+			//}else{
+			text[j-6]=char(radioData[j]);
+			//}
+			if (radioData[j]==0){break;}
+			++j;
+		}
+		tft.print(text);
 	}
-	tft.print(text);
-}
-void tftfloat(byte cursorsize)
-{
-setcursorsize(cursorsize);
-float data =(((float)(radioData[4]<<8)+radioData[5])/100);
-if (data<10){tft.print(" ");}
-if (data<100){tft.print(" ");}
-
-tft.print((float)data);	
-}
-void tftint(byte cursorsize){
+	void tftfloat(byte cursorsize)
+	{
 	setcursorsize(cursorsize);
-	if (radioint(4)<10){tft.print(" ");}
-	if (radioint(4)<100){tft.print(" ");}
-	if (radioint(4)<1000){tft.print(" ");}
-	tft.print(radioint(4));	
+	float data =(((float)(radioData[4]<<8)+radioData[5])/100);
+	if (data<10){tft.print(" ");}
+	if (data<100){tft.print(" ");}
 
-}
-void setcursorsize(byte size){
-				tft.setCursor(radioData[6],radioData[7]);
-				tft.setTextSize(size);
-}
+	tft.print((float)data);	
+	}
+	void tftint(byte cursorsize){
+		setcursorsize(cursorsize);
+		if (radioint(4)<10){tft.print(" ");}
+		if (radioint(4)<100){tft.print(" ");}
+		if (radioint(4)<1000){tft.print(" ");}
+		tft.print(radioint(4));	
+
+	}
+	void setcursorsize(byte size){
+					tft.setCursor(radioData[6],radioData[7]);
+					tft.setTextSize(size);
+	}
+#endif
 long readVcc() {
   long result;
   // Read 1.1V reference against AVcc
@@ -860,7 +919,7 @@ void startRadioPacket(byte sendAddress,byte packetType){
 		radioData[7] = radioData[6]; // xpos of text
 		radioData[6] = radioData[5]; // ypos of text
 	//this is a results to screen as int packet requestradioData[3]
-		radioData[2] = 200; // change packet type to write on screen
+		radioData[2] = 120; // change packet type to write on screen
 		radioData[3] = 9+radioData[4];  // 1 print int 2 print int/100 3 print double size in 4 double size int4/100
 	}
 	radioData[0] = sendAddress; //dest
@@ -880,12 +939,18 @@ void startRadioPacket(byte sendAddress,byte packetType){
 int readIr()
 {
 #ifdef IR
+		  	
+		  	strip.setPixelColor(0,5,0,0);
+			strip.show();
 		  int dev = 0x5A<<1; // ir sensor
 		  int data_low = 0;// ir sensor
 		  int data_high = 0;// ir sensor
 		  int pec = 0;// ir sensor
 		  int inttemp;
 			  i2c_start_wait(dev+I2C_WRITE);
+			
+			  strip.setPixelColor(0,0,5,0);
+			strip.show();
 			  i2c_write(0x07);
 		//    i2c_write(0x06); //internal temp
 			  i2c_rep_start(dev+I2C_READ);
